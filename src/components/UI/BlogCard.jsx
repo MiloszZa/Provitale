@@ -27,7 +27,7 @@ function BlogCard({ post }) {
             <div className="d-flex align-items-center">
               <img
                 className="rounded-circle me-3"
-                src="/assets/magda2 - Copy.jpg"
+                src="Provitale/assets/magda2 - Copy.jpg"
                 height="40"
                 width="40"
                 alt={post.author}

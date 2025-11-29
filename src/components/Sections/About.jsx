@@ -91,7 +91,7 @@ function About() {
               <div className="rounded-4 overflow-hidden position-relative">
                 <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary opacity-20 rounded-4 "></div>
                 <img
-                  src="/assets/magda2.jpg"
+                  src="Provitale/assets/magda2.jpg"
                   alt="Magdalena Czarnecka-Zawadzka"
                   className="img-fluid position-relative z-1 p-3"
                 />

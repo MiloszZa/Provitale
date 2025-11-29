@@ -4,7 +4,7 @@ function BlogPreview() {
   const blogPosts = [
     {
       id: 1,
-      image: "/assets/ciaza.jpg",
+      image: "Provitale/assets/ciaza.jpg",
       category: "Zdrowie",
       title: "🌸 Ból kręgosłupa w ciąży? Nie musisz się z nim męczyć! 🌸",
       excerpt:
@@ -16,7 +16,7 @@ function BlogPreview() {
     },
     {
       id: 2,
-      image: "/assets/dyskopatia.jpg",
+      image: "Provitale/assets/dyskopatia.jpg",
       category: "Zdrowie",
       title:
         "🟦 DYSKOPATIA LĘDŹWIOWA — mechanizmy, objawy i podejście terapeutyczne",
@@ -29,7 +29,7 @@ function BlogPreview() {
     },
     {
       id: 3,
-      image: "/assets/woda.jpg",
+      image: "Provitale/assets/woda.jpg",
       category: "Zdrowie",
       title:
         "💧 Dlaczego nawodnienie ma kluczowe znaczenie dla regeneracji tkanek?",
