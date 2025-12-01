@@ -9,7 +9,7 @@ function BlogPreview() {
       title: "🌸 Ból kręgosłupa w ciąży? Nie musisz się z nim męczyć! 🌸",
       excerpt:
         "Ciąża to wyjątkowy czas – ale dla wielu kobiet także okres, w którym pojawiają się bóle kręgosłupa, miednicy, odcinka lędźwiowego czy spojenia łonowego...",
-      link: "https://www.facebook.com/search/top?q=provitale%20fizjoterapia%20magdalena%20czarnecka-zawadzka&locale=pl_PL!",
+      link: "https://www.facebook.com/permalink.php?story_fbid=pfbid026vNioTJ1XaLLDVLyhdAGMNkHLGEvhv3T1VDvYkmzK3LR5rLG5C7u6uHDZtmBEZBRl&id=61568069184701&rdid=HYs3ZgVXxYrti3Bq#",
       author: "Magdalena Czarnecka-Zawadzka",
       date: "Listopad 25, 2025",
       readTime: "6 min",

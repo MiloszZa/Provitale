@@ -366,3 +366,14 @@ html {
 .navbar-dark .navbar-nav .nav-link:focus {
   color: white !important;
 }
+/* Styl dla przycisku z spinnerem */
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.15em;
+}
