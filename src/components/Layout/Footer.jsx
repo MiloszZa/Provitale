@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+
   const generatePDF = () => {
-    // Tworzymy zawartość regulaminu w formacie HTML
+    // ... (ta funkcja pozostaje bez zmian jak w oryginalnym kodzie)
     const regulaminContent = `
       <!DOCTYPE html>
       <html>
@@ -91,7 +93,7 @@ function Footer() {
             <p>4. Gabinet prowadzi elektroniczną dokumentację medyczną świadczeń oraz zapewnia ochronę danych zawartych w tej dokumentacji.</p>
             <p>5. Gabinet może udostępnić dokumentację medyczną:</p>
             <ul>
-              <li>pacjentowi lub jego przedstawicielowi ustawowemu, bądź osobie upoważnionej przez pacjenta,</li>
+              <li>pacjentowi lub jego przedstawicielowi ustawowemu, bądź osoba upoważniona przez pacjenta,</li>
               <li>zakładowi opieki zdrowotnej i osobom wykonującym zawód medyczny poza zakładami opieki zdrowotnej, jeśli dokumentacja ta jest niezbędna do zapewnienia ciągłości świadczeń zdrowotnych</li>
               <li>innym upoważnionym organom.</li>
             </ul>
@@ -146,8 +148,8 @@ function Footer() {
               <li>Przestrzegania zaleceń lekarza i fizjoterapeuty.</li>
               <li>Poinformowanie fizjoterapeuty o aktualnych i przebytych schorzeniach oraz istniejących przeciwwskazaniach do rehabilitacji.</li>
               <li>Poinformowanie fizjoterapeuty jeżeli stan zdrowia ulegnie zmianie.</li>
-              <li>Przestrzegania zakazu palenia tytoniu oraz spożywania alkoholu na terenie gabinetu.</li>
-              <li>Przestrzegania zasad bezpieczeństwa przeciwpożarowego.</li>
+              <li>Przestrzeganie zakazu palenia tytoniu oraz spożywania alkoholu na terenie gabinetu.</li>
+              <li>Przestrzeganie zasad bezpieczeństwa przeciwpożarowego.</li>
             </ol>
           </div>
 
@@ -189,157 +191,470 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-dark text-white pt-5 pb-3">
-      <div className="container">
-        <div className="row">
-          {/* Informacje o firmie */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="d-flex align-items-center mb-3">
-              <div className="bg-primary rounded-circle p-2 me-3">
-                <i className="bi bi-heart-pulse text-white fs-4"></i>
+    <footer className="footer-section position-relative overflow-hidden">
+      {/* Background elements */}
+      <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-dark"></div>
+
+      {/* Animated dots background */}
+      <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="position-absolute bg-primary rounded-circle"
+            style={{
+              width: `${Math.random() * 10 + 2}px`,
+              height: `${Math.random() * 10 + 2}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 20 + 10}s infinite linear`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      <div className="container position-relative z-1">
+        {/* Main Footer Content */}
+        <div className="row g-5 py-5">
+          {/* Brand Column */}
+          <div className="col-lg-4 col-md-6">
+            <div className="brand-section mb-4">
+              <div className="d-flex align-items-center mb-4">
+                <div className="logo-icon me-3">
+                  <div className="logo-circle bg-gradient-primary text-white d-flex align-items-center justify-content-center">
+                    <i className="bi bi-heart-pulse fs-3"></i>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="fw-bold text-white mb-0">Provitale</h2>
+                  <p className="text-light mb-0">Fizjoterapia & Osteopatia</p>
+                </div>
               </div>
-              <h4 className="fw-bold mb-0 text-primary">Provitale</h4>
-            </div>
-            <p className="text-light mb-3">
-              Profesjonalna fizjoterapia z indywidualnym podejściem do każdego
-              pacjenta. Pomagam wrócić do pełnej sprawności i poprawić jakość
-              życia.
-            </p>
-            <div className="d-flex">
-              <div className="bg-primary bg-opacity-10 rounded p-3 me-3 text-center">
-                <i className="bi bi-award-fill text-primary fs-5"></i>
-                <div className="small mt-1">Doświadczenie</div>
-              </div>
-              <div className="bg-primary bg-opacity-10 rounded p-3 me-3 text-center">
-                <i className="bi bi-person-check-fill text-primary fs-5"></i>
-                <div className="small mt-1">Indywidualne podejście</div>
-              </div>
-              <div className="bg-primary bg-opacity-10 rounded p-3 text-center">
-                <i className="bi bi-shield-check text-primary fs-5"></i>
-                <div className="small mt-1">Profesjonalizm</div>
+              <p className="text-light mb-4">
+                Profesjonalna fizjoterapia z indywidualnym podejściem do każdego
+                pacjenta. Pomagam wrócić do pełnej sprawności i poprawić jakość
+                życia.
+              </p>
+
+              <div className="d-flex gap-3 mb-4">
+                {[
+                  { icon: "bi-award-fill", label: "Doświadczenie" },
+                  { icon: "bi-person-check-fill", label: "Indywidualne" },
+                  { icon: "bi-shield-check", label: "Profesjonalizm" },
+                ].map((item, index) => (
+                  <div key={index} className="feature-pill">
+                    <div className="icon-wrapper">
+                      <i className={`bi ${item.icon}`}></i>
+                    </div>
+                    <span className="small">{item.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Kontakt */}
-          <div className="col-lg-4 col-md-6 mb-4">
-            <h5 className="fw-bold border-bottom border-primary pb-2 mb-4">
-              <i className="bi bi-telephone me-2"></i>
-              Kontakt
-            </h5>
+          {/* Contact Column */}
+          <div className="col-lg-4 col-md-6">
+            <div className="contact-section mb-4">
+              <h4 className="fw-bold text-white mb-4 pb-2 border-bottom border-primary">
+                <i className="bi bi-geo-alt me-2"></i>
+                Kontakt
+              </h4>
 
-            <div className="mb-3 d-flex align-items-start">
-              <i className="bi bi-geo-alt-fill text-primary me-3 mt-1"></i>
-              <div>
-                <h6 className="fw-bold mb-1">Adres</h6>
-                <p className="mb-0 text-light">
-                  ul. Warszawska 290
-                  <br />
-                  43-155 Bieruń
-                </p>
+              <div className="contact-info">
+                {[
+                  {
+                    icon: "bi-geo-alt-fill",
+                    title: "Adres gabinetu",
+                    content: "ul. Warszawska 290, 43-155 Bieruń",
+                    link: null,
+                  },
+                  {
+                    icon: "bi-telephone-fill",
+                    title: "Telefon",
+                    content: "+48 883 940 074",
+                    link: "tel:+48883940074",
+                  },
+                  {
+                    icon: "bi-envelope-fill",
+                    title: "E-mail",
+                    content: "fizjoterapiaprovitale@gmail.com",
+                    link: "mailto:fizjoterapiaprovitale@gmail.com",
+                  },
+                  {
+                    icon: "bi-clock-fill",
+                    title: "Godziny pracy",
+                    content: "Pon-Pt: 8:00-20:00 | Sob: 9:00-14:00",
+                    link: null,
+                  },
+                ].map((item, index) => (
+                  <div key={index} className="contact-item mb-3">
+                    <div className="d-flex">
+                      <div className="contact-icon">
+                        <i className={`bi ${item.icon}`}></i>
+                      </div>
+                      <div className="ms-3">
+                        <h6 className="fw-bold text-light mb-1">
+                          {item.title}
+                        </h6>
+                        {item.link ? (
+                          <a
+                            href={item.link}
+                            className="text-decoration-none text-light hover-primary"
+                          >
+                            {item.content}
+                          </a>
+                        ) : (
+                          <p className="text-light mb-0">{item.content}</p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            <div className="mb-3 d-flex align-items-start">
-              <i className="bi bi-telephone-fill text-primary me-3 mt-1"></i>
-              <div>
-                <h6 className="fw-bold mb-1">Telefon</h6>
+              {/* Quick Contact Buttons */}
+              <div className="mt-4 d-flex gap-2">
                 <a
                   href="tel:+48883940074"
-                  className="text-white text-decoration-none hover-text-primary"
+                  className="btn btn-primary btn-sm d-flex align-items-center"
                 >
-                  +48 883 940 074
+                  <i className="bi bi-telephone me-1"></i>
+                  Zadzwoń
                 </a>
-              </div>
-            </div>
-
-            <div className="mb-4 d-flex align-items-start">
-              <i className="bi bi-envelope-fill text-primary me-3 mt-1"></i>
-              <div>
-                <h6 className="fw-bold mb-1">E-mail</h6>
                 <a
                   href="mailto:fizjoterapiaprovitale@gmail.com"
-                  className="text-white text-decoration-none hover-text-primary"
+                  className="btn btn-outline-light btn-sm d-flex align-items-center"
                 >
-                  fizjoterapiaprovitale@gmail.com
+                  <i className="bi bi-envelope me-1"></i>
+                  Napisz
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Social Media i Godziny otwarcia */}
-          <div className="col-lg-4 col-md-12 mb-4">
-            <h5 className="fw-bold border-bottom border-primary pb-2 mb-4">
-              <i className="bi bi-clock me-2"></i>
-              Godziny przyjęć
-            </h5>
+          {/* Social & Links Column */}
+          <div className="col-lg-4 col-md-12">
+            <div className="row">
+              {/* Social Media */}
+              <div className="col-md-6 col-lg-12 mb-4">
+                <h4 className="fw-bold text-white mb-4 pb-2 border-bottom border-primary">
+                  <i className="bi bi-heart me-2"></i>
+                  Obserwuj nas
+                </h4>
 
-            <div className="mb-4">
-              <div className="d-flex justify-content-between border-bottom border-secondary pb-1 mb-2">
-                <span>Poniedziałek - Piątek</span>
-                <span className="fw-bold text-primary">8:00 - 20:00</span>
+                <div className="social-links">
+                  {[
+                    {
+                      platform: "Facebook",
+                      icon: "bi-facebook",
+                      url: "https://www.facebook.com/profile.php?id=61568069184701",
+                      color: "#1877f2",
+                    },
+                    {
+                      platform: "ZnanyLekarz",
+                      icon: "bi-heart-pulse",
+                      url: "https://www.znanylekarz.pl/magdalena-czarnecka-zawadzka/",
+                      color: "#00b894",
+                    },
+                    {
+                      platform: "Instagram",
+                      icon: "bi-instagram",
+                      url: "#",
+                      color: "#e4405f",
+                    },
+                    {
+                      platform: "Google Maps",
+                      icon: "bi-geo",
+                      url: "https://maps.google.com/?q=ul.+Warszawska+290,+43-155+Bieruń",
+                      color: "#34a853",
+                    },
+                  ].map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-btn"
+                      style={{ "--social-color": social.color }}
+                    >
+                      <i className={`bi ${social.icon}`}></i>
+                      <span>{social.platform}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
-              <div className="d-flex justify-content-between border-bottom border-secondary pb-1 mb-2">
-                <span>Sobota</span>
-                <span className="fw-bold text-primary">9:00 - 14:00</span>
-              </div>
-              <div className="d-flex justify-content-between">
-                <span>Niedziela</span>
-                <span className="fw-bold text-warning">Zamknięte</span>
-              </div>
-            </div>
-
-            <h6 className="fw-bold mb-3">
-              <i className="bi bi-heart me-2"></i>
-              Obserwuj nas
-            </h6>
-            <div className="d-flex">
-              <a
-                href="https://www.facebook.com/profile.php?id=61568069184701"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline-primary btn-sm me-2 d-flex align-items-center"
-              >
-                <i className="bi bi-facebook me-1"></i>
-                Facebook
-              </a>
-              <a
-                href="https://www.znanylekarz.pl/magdalena-czarnecka-zawadzka/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline-info btn-sm d-flex align-items-center"
-              >
-                <i className="bi bi-heart-pulse me-1"></i>
-                ZnanyLekarz
-              </a>
             </div>
           </div>
         </div>
 
-        {/* Stopka dolna */}
-        <hr className="my-4 border-secondary" />
+        {/* Divider */}
+        <div className="divider py-1">
+          <div className="line"></div>
+          <div className="logo-center">
+            <div className="logo-small bg-gradient-primary text-white">
+              <i className="bi bi-heart-pulse"></i>
+            </div>
+          </div>
+        </div>
 
-        <div className="row align-items-center">
-          <div className="col-md-6 text-center text-md-start mb-2 mb-md-0">
-            <p className="mb-0 text-light">
+        {/* Copyright */}
+        <div className="row py-4">
+          <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <p className="text-light mb-0">
               <i className="bi bi-c-circle me-1"></i>
-              2025 Fizjoterapia Magdalena Czarnecka Zawadzka. Wszelkie prawa
+              2025 Fizjoterapia Magdalena Czarnecka-Zawadzka. Wszelkie prawa
               zastrzeżone.
+            </p>
+            <p className="small text-light mt-2">
+              NIP: ... | REGON: ... | Gabinet Fizjoterapii
             </p>
           </div>
           <div className="col-md-6 text-center text-md-end">
-            <div className="d-flex justify-content-center justify-content-md-end flex-wrap gap-2">
-              <button
-                onClick={handleDownloadPDF}
-                className="btn btn-outline-light btn-sm d-flex align-items-center"
-              >
-                <i className="bi bi-file-pdf me-1"></i>
-                Pobierz Regulamin (PDF)
-              </button>
+            <div className="d-flex justify-content-center justify-content-md-end gap-3">
+              <a href="#privacy" className="text-light small hover-primary">
+                Polityka prywatności
+              </a>
+              <a href="#terms" className="text-light small hover-primary">
+                Warunki korzystania
+              </a>
+              <a href="#cookies" className="text-light small hover-primary">
+                Cookies
+              </a>
             </div>
+            <p className="small text-light mt-3">
+              Stworzone z <i className="bi bi-heart-fill text-danger mx-1"></i>{" "}
+              dla Twojego zdrowia
+            </p>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .footer-section {
+          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          color: white;
+          position: relative;
+        }
+
+        .bg-gradient-dark {
+          background: linear-gradient(
+            135deg,
+            rgba(26, 26, 46, 0.95) 0%,
+            rgba(22, 33, 62, 0.95) 100%
+          );
+        }
+
+        .logo-circle {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #0d6efd 0%, #198754 100%);
+          transition: all 0.3s ease;
+        }
+
+        .logo-circle:hover {
+          transform: rotate(360deg);
+          box-shadow: 0 0 20px rgba(13, 110, 253, 0.5);
+        }
+
+        .feature-pill {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+          min-width: 80px;
+          transition: all 0.3s ease;
+        }
+
+        .feature-pill:hover {
+          background: rgba(13, 110, 253, 0.1);
+          transform: translateY(-3px);
+        }
+
+        .feature-pill .icon-wrapper {
+          width: 40px;
+          height: 40px;
+          background: rgba(13, 110, 253, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 8px;
+        }
+
+        .feature-pill i {
+          color: #0d6efd;
+          font-size: 1.2rem;
+        }
+
+        .newsletter-card {
+          background: rgba(255, 255, 255, 0.05);
+          padding: 20px;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+          padding: 10px;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+          background: rgba(255, 255, 255, 0.05);
+          transform: translateX(5px);
+        }
+
+        .contact-icon {
+          width: 40px;
+          height: 40px;
+          background: rgba(13, 110, 253, 0.1);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .contact-icon i {
+          color: #0d6efd;
+          font-size: 1.2rem;
+        }
+
+        .hover-primary:hover {
+          color: #0d6efd !important;
+          text-decoration: none;
+        }
+
+        .social-links {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .social-btn {
+          display: flex;
+          align-items: center;
+          padding: 10px 15px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 8px;
+          color: white;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: 1px solid transparent;
+        }
+
+        .social-btn:hover {
+          background: var(--social-color);
+          transform: translateY(-3px);
+          border-color: var(--social-color);
+          color: white;
+        }
+
+        .social-btn i {
+          margin-right: 8px;
+          font-size: 1.2rem;
+        }
+
+        .quick-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .quick-link-item {
+          padding: 10px 15px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 8px;
+          color: white;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: none;
+          text-align: left;
+        }
+
+        .quick-link-item:hover {
+          background: rgba(13, 110, 253, 0.1);
+          transform: translateX(5px);
+          color: #0d6efd;
+        }
+
+        .pdf-link {
+          background: rgba(220, 53, 69, 0.1);
+          color: #dc3545;
+        }
+
+        .pdf-link:hover {
+          background: rgba(220, 53, 69, 0.2);
+          color: #dc3545 !important;
+        }
+
+        .divider {
+          position: relative;
+          margin: 2rem 0;
+        }
+
+        .line {
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+          );
+        }
+
+        .logo-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        .logo-small {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #0d6efd 0%, #198754 100%);
+          box-shadow: 0 0 15px rgba(13, 110, 253, 0.3);
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0) rotate(0deg);
+          }
+          33% {
+            transform: translateY(-20px) rotate(120deg);
+          }
+          66% {
+            transform: translateY(10px) rotate(240deg);
+          }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .social-links {
+            grid-template-columns: 1fr;
+          }
+
+          .feature-pill {
+            min-width: 70px;
+            padding: 8px;
+          }
+
+          .feature-pill .icon-wrapper {
+            width: 35px;
+            height: 35px;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

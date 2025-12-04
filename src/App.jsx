@@ -14,8 +14,8 @@ function App() {
       <main className="flex-shrink-0">
         <Navigation />
         <Hero />
-        <About />
         <Features />
+        <About />
         <Pricing />
         <Contact />
         <BlogPreview />
